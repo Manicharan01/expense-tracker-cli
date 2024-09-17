@@ -1,0 +1,19 @@
+{
+    "name": "expense-tracker-cli",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bin": {
+        "expense-tracker": "bin/index.js"
+    },
+    "dependencies": {
+        "@types/node": "^22.5.5",
+        "commander": "^12.1.0"
+    }
+}
