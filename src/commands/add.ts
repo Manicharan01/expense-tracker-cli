@@ -15,6 +15,7 @@ export function add(options: any) {
   const id = options.id;
   const description = options.description;
   console.log(amount, id, description);
+  const newDate = dateSchema.safeParse(String(options.date));
 
   const allExpenses = JSON.parse(
     fs.readFileSync("files/expenses.json", "utf-8"),
@@ -25,11 +26,10 @@ export function add(options: any) {
     id,
     description: description[0],
   });
-  const newDateVariable = dateSchema.safeParse(new Date());
 
   const newExpense = {
     id: newExpenseVariables.id,
-    date: String(newDateVariable.data).slice(0, 10),
+    date: newDate.data,
     description: newExpenseVariables.description,
     amount: newExpenseVariables.amount,
   };

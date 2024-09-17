@@ -5,6 +5,7 @@ import { add } from "./commands/add";
 import { update } from "./commands/update";
 import { remove } from "./commands/delete";
 import { listall } from "./commands/listall";
+import { summary } from "./commands/summary";
 const program = new Command();
 
 program
@@ -20,6 +21,7 @@ program
   )
   .option("-desc, --description [words...]", "Add a description to the Expense")
   .option("-a, --amount [number]", "Money expended")
+  .option("-date, --date [letters]", "Enter the date of expense in yyyy-mm-dd")
   .action(add);
 
 program
@@ -38,5 +40,13 @@ program
 program.command("delete [id]").action(remove);
 
 program.command("listall").action(listall);
+
+program
+  .command("summary")
+  .option(
+    "-m, --month [number]",
+    "Enter month in terms of number to fetch the expenses",
+  )
+  .action(summary);
 
 program.parse(process.argv);

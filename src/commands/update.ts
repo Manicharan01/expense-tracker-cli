@@ -5,11 +5,9 @@ import fs from "fs";
 
 const stringSchema = z.coerce.string();
 const numberSchema = z.coerce.number();
-const dateSchema = z.coerce.date();
 
 interface Expense {
   id: number;
-  date: string;
   description: string;
   amount: number;
 }
@@ -17,7 +15,6 @@ interface Expense {
 export function update(options: any) {
   const updatedExpense: Expense = {
     id: 0,
-    date: "",
     description: "",
     amount: 0,
   };
@@ -42,8 +39,6 @@ export function update(options: any) {
     updatedExpense["description"] = wantedExpense.description;
   }
 
-  const newDate = dateSchema.safeParse(new Date());
-  updatedExpense["date"] = String(newDate.data).slice(0, 10);
   updatedExpense["id"] = Number(options.id);
 
   allExpenses[String(options.id)] = updatedExpense;
