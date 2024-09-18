@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 import fs from "fs";
+import { Expense } from "./add";
 
 export function summary(options: any) {
-  const allExpenses = JSON.parse(
+  const allExpenses: Expense[] = JSON.parse(
     fs.readFileSync("files/expenses.json", "utf-8"),
   );
 
@@ -22,20 +23,20 @@ export function summary(options: any) {
     );
 
     let monthExpenses = 0;
-    Object.keys(allExpenses).map((expense) => {
+    Object.keys(allExpenses).map((key) => {
       if (
-        new Date(allExpenses[expense].date) >= startMonth &&
-        new Date(allExpenses[expense].date) <= endOfMonth
+        new Date(allExpenses[Number(key)].date ?? new Date()) >= startMonth &&
+        new Date(allExpenses[Number(key)].date ?? new Date()) <= endOfMonth
       ) {
-        monthExpenses += allExpenses[expense].amount;
+        monthExpenses += allExpenses[Number(key)].amount ?? 0;
       }
     });
 
     console.log(`Total expenses: ₹${monthExpenses}`);
   } else {
     let totalExpense = 0;
-    Object.keys(allExpenses).map((expense) => {
-      totalExpense += allExpenses[expense].amount;
+    Object.keys(allExpenses).map((key) => {
+      totalExpense += allExpenses[Number(key)].amount ?? 0;
     });
 
     console.log(`Total expenses: ₹${totalExpense}`);

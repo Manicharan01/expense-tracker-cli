@@ -6,6 +6,7 @@ import { update } from "./commands/update";
 import { remove } from "./commands/delete";
 import { listall } from "./commands/listall";
 import { summary } from "./commands/summary";
+import { filter } from "./commands/filter";
 const program = new Command();
 
 program
@@ -22,6 +23,7 @@ program
   .option("-desc, --description [words...]", "Add a description to the Expense")
   .option("-a, --amount [number]", "Money expended")
   .option("-date, --date [letters]", "Enter the date of expense in yyyy-mm-dd")
+  .option("-c, --category [category]", "Assign a category for given Expense")
   .action(add);
 
 program
@@ -35,6 +37,7 @@ program
     "Add a new description to the Expense",
   )
   .option("-a, --amount [number]", "Update Money expended")
+  .option("-c, --category [category]", "Category to Update")
   .action(update);
 
 program.command("delete [id]").action(remove);
@@ -48,5 +51,10 @@ program
     "Enter month in terms of number to fetch the expenses",
   )
   .action(summary);
+
+program
+  .command("filter")
+  .option("-c, --category [category]", "Category to Filter")
+  .action(filter);
 
 program.parse(process.argv);
