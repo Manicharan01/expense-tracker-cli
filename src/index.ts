@@ -7,6 +7,7 @@ import { remove } from "./commands/delete";
 import { listall } from "./commands/listall";
 import { summary } from "./commands/summary";
 import { filter } from "./commands/filter";
+import { jsonToCsv } from "./commands/export";
 const program = new Command();
 
 program
@@ -56,5 +57,7 @@ program
   .command("filter")
   .option("-c, --category [category]", "Category to Filter")
   .action(filter);
+
+program.command("export").action(jsonToCsv);
 
 program.parse(process.argv);
