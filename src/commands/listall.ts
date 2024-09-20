@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 import fs from "fs";
-import { Expense } from "./add";
+import { DIRECTORY, Expense } from "./add";
 
 export function listall() {
-  const allExpenses: Expense[] = JSON.parse(
-    fs.readFileSync("files/expenses.json", "utf-8"),
-  );
+    const allExpenses: Expense[] = JSON.parse(
+        fs.readFileSync(`${DIRECTORY}/expenses.json`, "utf-8"),
+    );
 
-  console.log(allExpenses);
+    console.log(allExpenses);
 }
