@@ -17,7 +17,7 @@ export const DIRECTORY = '';
 export enum categories {
     Groceries = "Groceries",
     Leisure = "Leisure",
-    Elsectronics = "Electronics",
+    Electronics = "Electronics",
     Utilities = "Utilities",
     Clothing = "Clothing",
     Health = "Health",
